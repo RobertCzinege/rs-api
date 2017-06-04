@@ -1,0 +1,28 @@
+{
+  "name": "rs-api",
+  "version": "1.0.0",
+  "description": "RS JSON HTTP API implementation",
+  "main": "app.js",
+  "scripts": {
+    "start-dev": "(node_modules/.bin/babel src -d build --source-maps inline --watch &) && nodemon build/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobertCzinege/rs-api.git"
+  },
+  "author": "Robert CZINEGE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobertCzinege/rs-api/issues"
+  },
+  "homepage": "https://github.com/RobertCzinege/rs-api#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.1"
+  }
+}
