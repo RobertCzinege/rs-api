@@ -45,9 +45,10 @@ Sending e-mails out is a common task, however I've never done before. After a se
 Widely used solutions for testing APIs. Mocha is easy to use, Supertest let me create HTTP calls with ease, and with the provided callbacks, it is easy to manipulate or validate the responses.
 
 ## Room to improve in the future (AKA TODO or what more can be done? :D) without any order
-- Implementing a proper logger for the error handling, like Winston
+- Implementing a proper logger and removing console.logs where possible (e.g. Winston)
 - Encrypting the database entries (e.g e-mail addresses)
 - Creating a separate collection for the tests
+- Proper documentation (e.g JSDoc)
 - Implementing the front end
 - Adding registration and proper authentication
 - Experimenting with relational databases?
