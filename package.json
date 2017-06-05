@@ -4,7 +4,8 @@
   "description": "RS JSON HTTP API implementation",
   "main": "app.js",
   "scripts": {
-    "start": "(node_modules/.bin/babel src -d build --source-maps inline --watch &) && nodemon build/app.js"
+    "start": "(node_modules/.bin/babel src -d build --source-maps inline --watch &) && nodemon build/app.js",
+    "test": "mocha build/test/test.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,8 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.5.1",
-    "nodemon": "^1.11.0"
+    "mocha": "^3.4.2",
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0"
   }
 }

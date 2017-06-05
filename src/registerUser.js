@@ -9,7 +9,8 @@ import validator from 'email-validator';
 
 export const registerUser = (req, res, db) => {
 
-  if (validator.validate(req.body.email)) {
+
+  if ((req.body.name && req.body.email) && validator.validate(req.body.email)) {
     let newUser = {
       name: req.body.name,
       email: req.body.email,
@@ -44,6 +45,6 @@ export const registerUser = (req, res, db) => {
     })
 
   } else {
-    res.status(400).json({success: false, msg: 'Please enter a valid email address'});
+    res.status(400).json({success: false, msg: 'Valid e-mail address and name is mandatory for the registration'});
   }
 }
