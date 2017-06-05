@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import validator from 'email-validator';
 
 // I'm using a simple email validator module, however a custom regexp could be written in case the project would need it.
-// For this, I found it easier to use a highly used one validator instead of writing an almost similar, but potentially faulty validator
+// For this, I found it easier to use a highly used validator instead of writing an almost similar, but potentially faulty validator
 
 export const registerUser = (req, res, db) => {
 
@@ -16,11 +16,12 @@ export const registerUser = (req, res, db) => {
       email: req.body.email,
     };
 
-    db.collection('Users').find({email: newUser.email}).toArray()
+    // I consider the e-mail as a unique entry, therefore I must check for duplication
+    db.collection(config.collectionName).find({email: newUser.email}).toArray()
     .then((result) => {
       if (result.length == 0) {
 
-        db.collection('Users').insert(newUser)
+        db.collection(config.collectionName).insert(newUser)
         .then(() => {
           const token = jwt.sign(newUser, config.secret, {
             expiresIn: config.tokenExpiration

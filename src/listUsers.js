@@ -7,10 +7,10 @@ export const listUsers = (req, res, db) => {
   jwt.verify(token, config.secret, (err, decode) => {
     if (err) {
       console.log(err);
-      res.status(400).json({success: false, msg: 'You cannot access the userlist'});
+      res.status(403).json({success: false, msg: 'You cannot access the userlist'});
 
     } else {
-      db.collection('Users').find({}).toArray()
+      db.collection(config.collectionName).find({}).toArray()
       .then((result) => {
         // Checking if there are any users registered in case all the documents are dropped, while the sent out token is still valid
         result.length == 0 ? res.status(200).send({success: true, msg: 'There are no users registered.' }) : res.status(200).json({success: true, users: result});

@@ -21,11 +21,11 @@ let invalidEmail = {
 
 describe('POST /registration : Registering a new user', () => {
 
-  // connecting to the database and removing the test data if it is there
+  // connecting to the database and removing the test data if there is any
   before((done) => {
     mongo.connect(config.mongodbURL)
     .then((database) => {
-      db = database.collection('Users');
+      db = database.collection(config.collectionName);
     })
     .then(() => {
       db.deleteMany({email: testUser.email})
@@ -134,7 +134,7 @@ describe('GET /users : Asking for the users list', () => {
     request(URL)
     .get('/users')
     .set(baseHeader)
-    .expect(400)
+    .expect(403)
     .expect('Content-Type', /json/)
     .end((err, res) => {
       done(err);
@@ -145,7 +145,7 @@ describe('GET /users : Asking for the users list', () => {
     request(URL)
     .get('/users?token=invalidToken')
     .set(baseHeader)
-    .expect(400)
+    .expect(403)
     .expect('Content-Type', /json/)
     .end((err, res) => {
       done(err);

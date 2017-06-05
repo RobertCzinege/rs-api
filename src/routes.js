@@ -6,14 +6,12 @@ import { listUsers } from "./listUsers.js";
 const router = express.Router();
 
 export const apiRouter = (db) => {
-  router.get('/', (req, res) => {
-    res.send('Server is working!');
-  });
-
+  //Registering User
   router.post('/registration', (req, res) => {
     registerUser(req, res, db);
   });
 
+  //Get the userlist
   router.get('/users', (req, res) => {
     listUsers(req, res, db);
   })
